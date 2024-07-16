@@ -1,4 +1,4 @@
-package doit_begin.chapter2;
+package java.doit_begin.chapter2;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -27,7 +27,7 @@ public class Q1_Random {
 
         System.out.println("키의 최댓값을 구합니다.");
         System.out.print("사람 수: ");
-        // int num = input.nextInt(); 난수를 위해 주석 처리
+        // int num = input.nextInt(); 난수 사용 위해 주석 처리
         int num = rand.nextInt(1, 100);
 
         int[] height = new int[num];

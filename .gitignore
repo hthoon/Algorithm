@@ -28,12 +28,9 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-### default ignore ###
-encodigns.xml
-misc.xml
-modules.xml
-vcx.xml
+### defatult ###
+Algorithm.iml
+.gitignore
 
 .idea
-Algorithm.iml
 out

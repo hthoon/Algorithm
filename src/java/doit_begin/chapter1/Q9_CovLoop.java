@@ -1,4 +1,4 @@
-package doit_begin.chapter1;
+package java.doit_begin.chapter1;
 
 import java.util.Scanner;
 
