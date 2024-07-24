@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Q6_SelectionSort {
 
     static void swap(int[] array, int a, int b) {
-        int temp = 0;
+        int temp;
         temp = array[a];
         array[a] = array[b];
         array[b] = temp;
