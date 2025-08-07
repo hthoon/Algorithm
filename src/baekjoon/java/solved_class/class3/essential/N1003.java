@@ -3,8 +3,8 @@ package baekjoon.java.solved_class.class3.essential;
 import java.io.*;
 
 public class N1003 {
-    /** TODO: 시간초과
-     * 피보나치 함수
+    /**
+     * 피보나치 함수 - DP(Memoization)
      */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,35 +26,34 @@ public class N1003 {
         }
         */
 
+        /* DP 배열 생성
+        입력값 범위: 1 <= T <= 40
+        [i][0] - i에서의 0 호출 횟수
+        [i][1] - i에서의 1 호출 횟수
+
+        (3) -> (*2), (*1)
+        (*2) -> (1), (0) -> 1 리턴, 0 리턴
+        (*1) -> 1 리턴
+        --> 1: 2, 0: 1
+        */
+        int[][] countArr = new int[41][2];
+        countArr[0][0] = 1;
+        countArr[0][1] = 0;
+
+        countArr[1][0] = 0;
+        countArr[1][1] = 1;
+
+        /* DP 배열도 피보나치 수열 형성 원리대로 생성한다. */
+        for (int i = 2; i < 41; i++) {
+            countArr[i][0] = countArr[i - 1][0] + countArr[i - 2][0];
+            countArr[i][1] = countArr[i - 1][1] + countArr[i - 2][1];
+        }
+
         for (int i = 0; i < T; i++) {
             int N = Integer.parseInt(br.readLine());
-            MyFibonacci myFibonacci = new MyFibonacci();
-            myFibonacci.fibonacci(N);
-            bw.write(myFibonacci.returnResult());
+            bw.write(countArr[N][0] + " " + countArr[N][1]);
+            bw.newLine();
         }
         bw.flush();
-    }
-
-    public static class MyFibonacci {
-        int count0 = 0;
-        int count1 = 0;
-
-        private int fibonacci(int n) {
-            if (n == 0) {
-                count0++;
-                return 0;
-            }
-            else if (n == 1) {
-                count1++;
-                return 1;
-            }
-            else {
-                return fibonacci(n - 1) + fibonacci(n - 2);
-            }
-        }
-
-        private String returnResult() {
-            return count0 + " " + count1 + "\n";
-        }
     }
 }
