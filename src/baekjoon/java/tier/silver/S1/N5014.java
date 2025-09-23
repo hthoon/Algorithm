@@ -19,10 +19,10 @@ public class N5014 {
         int D = Integer.parseInt(st.nextToken()); // 아래로 D층 이동
 
         // 조기 종료
-//        if (S == G) {
-//            System.out.print(0);
-//            return;
-//        }
+        if (S == G) {
+            System.out.print(0);
+            return;
+        }
 
         // 버튼 입력 횟수를 기록할 배열
         final int MAX_FLOOR = F;
@@ -33,15 +33,14 @@ public class N5014 {
 
         Queue<Integer> queue = new ArrayDeque<>();
         queue.offer(S);
-        boolean found = false;
 
         int[] nextDist = new int[2];
         while (!queue.isEmpty()) {
             int current = queue.poll();
 
             if (current == G) {
-                found = true;
-                break;
+                System.out.print(pressed[G]);
+                return;
             }
 
             nextDist[0] = current + U; // 상
@@ -58,13 +57,7 @@ public class N5014 {
                 }
             }
         }
-
-        // 탐색 성공 여부에 따른 결과 출력
-        if (found) {
-            System.out.print(pressed[G]);
-        }
-        else {
-            System.out.print("use the stairs");
-        }
+        // 여기에 도달했다는 것은, 탐색에 실패했다는 것이다.
+        System.out.print("use the stairs");
     }
 }
